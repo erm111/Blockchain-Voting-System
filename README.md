@@ -37,6 +37,20 @@ with their matric number (`00/0000`), an election official verifies & approves t
 
 ---
 
+## 📸 Screenshots
+
+| Cast your vote | After voting |
+|---|---|
+| ![Voting ballot](docs/screenshots/vote-ballot.png) | ![Vote confirmation](docs/screenshots/vote-confirmation.png) |
+
+| Officials dashboard | Voter management |
+|---|---|
+| ![Officials dashboard](docs/screenshots/admin-dashboard.png) | ![Voter management](docs/screenshots/voter-management.png) |
+
+| Get verified (student) | Results |
+|---|---|
+| ![Request to participate](docs/screenshots/vote-request.png) | ![Results](docs/screenshots/results.png) |
+
 ## 🏗️ Architecture
 
 ```
@@ -73,6 +87,28 @@ The matric number itself is **never stored on-chain** — only its `keccak256` h
 | **Git** | to clone the repo |
 | **Ganache** | [GUI](https://archive.trufflesuite.com/ganache/) (RPC on `:7545`) or `npm i -g ganache` (CLI on `:8545`) |
 | **MetaMask** | browser extension, for the officials' wallet |
+
+### Installing the prerequisites
+
+**macOS** (with [Homebrew](https://brew.sh)):
+```bash
+brew install node            # Node.js + npm
+npm install -g ganache       # Ganache CLI (RPC on :8545) — or download the GUI (RPC on :7545)
+# Git is pre-installed, or run: xcode-select --install
+# MetaMask: add the extension from https://metamask.io
+```
+
+**Windows** (with [winget](https://learn.microsoft.com/windows/package-manager/)):
+```powershell
+winget install --id OpenJS.NodeJS -e
+winget install --id Git.Git -e
+# Ganache: download the GUI installer (RPC on :7545), or `npm i -g ganache`
+# MetaMask: add the extension from https://metamask.io
+```
+
+> **Port note:** the Ganache **GUI** serves RPC on `:7545`; the **CLI** uses `:8545`. Use whichever
+> matches your setup consistently across the three `.env` files and MetaMask. The examples below
+> assume `:7545`.
 
 ---
 
