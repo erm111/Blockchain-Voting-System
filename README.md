@@ -230,6 +230,42 @@ stop, duration auto-expiry, and post-end approval block.
 
 ---
 
+## 🌐 Deploy to a public testnet (Sepolia)
+
+Run BVS on **Ethereum Sepolia** so every transaction is public and viewable on
+[sepolia.etherscan.io](https://sepolia.etherscan.io) — no local Ganache needed.
+
+**You'll need:**
+- A **dedicated throwaway account** (create a fresh one in MetaMask — never use a wallet with real funds).
+- **Sepolia test ETH** for it, from a faucet such as
+  [sepolia-faucet.pk910.de](https://sepolia-faucet.pk910.de) (browser PoW, no signup) or the
+  [Google Cloud faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
+- *(Optional)* an [Alchemy](https://alchemy.com)/[Infura](https://infura.io) RPC URL (more reliable
+  than the public default) and a free [Etherscan API key](https://etherscan.io/myapikey) to verify
+  the source.
+
+**Steps:**
+```bash
+# 1. In contracts/.env set:
+#    DEPLOYER_PRIVATE_KEY=<your funded Sepolia account's key>
+#    SEPOLIA_RPC_URL=        (blank = public RPC, or paste Alchemy/Infura)
+#    ETHERSCAN_API_KEY=      (optional, for verification)
+
+# 2. Deploy (writes shared/BVS.json with the Sepolia address):
+npm run deploy:sepolia
+
+# 3. (Optional) verify the source on Etherscan:
+cd contracts && npx hardhat verify --network sepolia <DEPLOYED_ADDRESS>
+
+# 4. Point the app at Sepolia, then restart backend + frontend:
+#    backend/.env :  RELAYER_PRIVATE_KEY=<funded key>   GANACHE_RPC=<sepolia RPC>
+#    frontend/.env:  VITE_GANACHE_RPC=<sepolia RPC>
+```
+
+In MetaMask, switch to the built-in **Sepolia** network and use your funded account as the official.
+Blocks take ~12s (so votes confirm slower than on Ganache), and the **relayer account must stay
+funded** since it pays gas for students' votes. Every action then appears on Etherscan.
+
 ## 🛠️ Troubleshooting
 
 | Symptom | Fix |
