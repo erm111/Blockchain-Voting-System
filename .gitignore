@@ -1,0 +1,19 @@
+node_modules/
+.env
+.env.local
+
+# Local Claude Code settings (personal, not shared)
+.claude/
+
+# Generated deployment artifact (re-created by `npm run deploy`)
+shared/BVS.json
+
+# Hardhat
+contracts/artifacts/
+contracts/cache/
+
+# Backend runtime data
+backend/data/
+
+# Frontend build
+frontend/dist/

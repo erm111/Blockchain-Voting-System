@@ -1,0 +1,17 @@
+{
+  "name": "bvs-backend",
+  "version": "1.0.0",
+  "description": "Babcock Voting System - relayer + matric auth API",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "express": "^4.19.2"
+  }
+}
