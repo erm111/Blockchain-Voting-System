@@ -13,7 +13,8 @@ async function main() {
   const bvs = await BVS.deploy();
   await bvs.waitForDeployment();
   const address = await bvs.getAddress();
-  console.log("BVS deployed to:", address);
+  const deployBlock = (await bvs.deploymentTransaction().wait()).blockNumber;
+  console.log("BVS deployed to:", address, "at block", deployBlock);
 
   // Build a RELAYER POOL: multiple accounts that can submit votes in parallel.
   // On Ganache these are the node's unlocked accounts (signers[1..]). The
@@ -65,6 +66,7 @@ async function main() {
     deployer: deployer.address,
     relayer: primary,
     relayerPool: pool,
+    deployBlock,
     abi: artifact.abi,
   };
 

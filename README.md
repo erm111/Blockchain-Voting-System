@@ -7,6 +7,10 @@ with their matric number (`00/0000`), an election official verifies & approves t
 
 > Built with Solidity + Hardhat, a Node/Express relayer, and a React + Vite frontend.
 
+> 🌐 **Live on Ethereum Sepolia:** contract
+> [`0x427D01de0225D49A0f44E715978a6b879F27bEC9`](https://sepolia.etherscan.io/address/0x427D01de0225D49A0f44E715978a6b879F27bEC9)
+> — every election action and vote is publicly viewable on Etherscan.
+
 ---
 
 ## 🎬 Demo

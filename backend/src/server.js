@@ -90,12 +90,15 @@ app.get(
   "/api/elections/:id/voters",
   asyncRoute(async (req, res) => {
     const electionId = Number(req.params.id);
-    const { contract } = chain();
+    const { contract, deployment } = chain();
     const requests = store.listRequests(electionId);
 
+    // Bound the log query to since-deployment — public RPCs reject scans from
+    // block 0 over a chain with millions of blocks (e.g. Sepolia).
+    const fromBlock = deployment.deployBlock || 0;
     const [approvedLogs, revokedLogs] = await Promise.all([
-      contract.queryFilter(contract.filters.VoterApproved(electionId)),
-      contract.queryFilter(contract.filters.VoterRevoked(electionId)),
+      contract.queryFilter(contract.filters.VoterApproved(electionId), fromBlock),
+      contract.queryFilter(contract.filters.VoterRevoked(electionId), fromBlock),
     ]);
     const events = [
       ...approvedLogs.map((l) => ({ t: "a", h: l.args.matricHash, b: l.blockNumber, i: l.index })),
