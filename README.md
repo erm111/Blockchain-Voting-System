@@ -9,6 +9,15 @@ with their matric number (`00/0000`), an election official verifies & approves t
 
 ---
 
+## 🎬 Demo
+
+![BVS voting demo](docs/screenshots/demo.gif)
+
+*A student logs in with their matric number, gets verified, casts a vote, and sees exactly who they
+voted for — every vote recorded on-chain.*
+
+---
+
 ## ✨ Features
 
 **For students**
